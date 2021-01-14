@@ -1,30 +1,26 @@
+# IMPORTED RANDOM FROM LIBRARY TO GET RANDOM WORD IN TUPLE
 import random
 
 
-# * Store a list (or tuple) of 5 to 10 words in your script.
+# TUPLE OF WORDS TO PULL FROM
 words_list = ['jackets','chipmunk','republicans','tuple','lumberjacks','numbed','paycheck','vanquish']
 
-# * Randomly choose a word from this list as the secret word.
+# SETTING THE RANDOM WORD ONCE hmna.py GETS RAN IN TERMINAL
 random_word = words_list[random.randrange(len(words_list))]
 # print(random_word) # working -> generates random word
 
-# * Display the unrevealed word as underscores (with the same length.)
+# GLOBAL VALUES BEING STORED (HIDDEN WORD, LETTERS ALREADY GUESSED AND NUMBER OF WRONG GUESSES )
 hidden_word = ''
-hang_man = ''
 already_guessed = []
 num_wrong_guesses = 0
 
-# TEST TO FIND OUT THE MAX AMOUNT OF TIMES TO ASK INPUT
-# def test():
-#     summ = len(random_word) + 6
-#     print(summ)
-# test()
-
+# FUNCTION THAT CREATES THE HIDDEN WORD
 def hide_word(random_word):
         global hidden_word
         hidden_word = '_' * len(random_word)
 # print(hidden_word) # working -> displays ['_','_','_','_','_'] for word
 
+# FUNCTION THAT CHECK THE STATUS OF HOW MANY WRONG GUESSES THE USER HAS
 def check_status(num_wrong_guesses):
     if num_wrong_guesses != 6:
         # print(num_wrong_guesses)
@@ -33,6 +29,7 @@ def check_status(num_wrong_guesses):
         print('\nYOU LOST!\nThank you for playing!\n\n\n')
         quit()
 
+# CHECKS THE CURRENT VALUE OF THE HIDDEN WORD TO SEE IF IT MATCHES THE ACTUAL RANDOM WORD
 def check_word(word):
 
     if word == '_' * len(hidden_word):
@@ -43,6 +40,7 @@ def check_word(word):
     else:
         pass
 
+# CHECKS TO SEE IF THE LETTER GUESS IS IN THE WORD, IS NOT IN THE WORD, IS NOT A LETTER, IS THE WHOLE WORD, IS ALREADY GUESSED OR IF THE USER WOULD LIKE TO QUIT.
 def letter_guessed(letter):
     global num_wrong_guesses
     global hidden_word
@@ -64,6 +62,8 @@ def letter_guessed(letter):
         new_num = int(num_wrong_guesses) + 1
         num_wrong_guesses = num_wrong_guesses + 1
 
+
+        # SETS THE HANGMAN ASCII DEPENDING ON THE NUMBER OF WRONG GUESS THE USER CURRENTLY HAS
         if num_wrong_guesses == 6:
             print(' \n _________\n|         |\n|         O\n|        -|-\n|        / \ \n-')
         elif num_wrong_guesses == 5:
@@ -94,6 +94,7 @@ def letter_guessed(letter):
         print(f'LETTERS ALREADY GUESSED:\n{already_guessed}')
         
 
+# STARTS THE GAME AND RUNS UNTIL THE NUMBER OF WRONG GUESSES MATCHES MAX NUMBER OF WRONG GUESSES SET BY DEV
 def start_game():
     name = input('\n\nWhats is your name?  ')
     print(f'\nHello {name}!')
@@ -102,6 +103,7 @@ def start_game():
     print('----------------------------------------------------------------------------')
     
     
+    # CONFIRMS IF THE PLAYER WANTS TO PLAY OR QUIT
     def ready():
         answer = input("\n\nAre you ready? y/n     ")
         if answer == "y":
@@ -119,7 +121,7 @@ def start_game():
             pass
     ready()
 
-
+# ENVOKES THE BEGINNING OF THE GAME
 start_game()
 
 # * Prompt the user to enter a letter.
