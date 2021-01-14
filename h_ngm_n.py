@@ -6,6 +6,41 @@ def check_win(string1, string2):
     else:
         return False
 
+def win_message():
+    print('=D')
+    print('Congratulations! You have completed the word puzzle. You are now free.')
+    revive = input('Continue? (y/n)')
+    replay(revive)
+
+def loss_message(mystery_word):
+    print('\n')
+    print('The correct word was ', mystery_word)
+    print('\n')
+    print('=O')
+    print('You have used all your guesses and have been hanged! Run again to have another chance at life.')
+    revive = input('Continue? (y/n)')
+    replay(revive)
+    
+def replay(revive):
+    if revive == 'y':
+        failed_guess_count = 0
+        hangman()
+
+def print_build(count):
+    
+    build = [[''],
+    [' ____', '|    |', '|', '|', '|', '|', '|_______'],
+    [' ____', '|    |', '|    O', '|', '|', '|', '|_______'],
+    [' ____', '|    |', '|    O', '|    |', '|', '|', '|_______'],
+    [' ____', '|    |', '|    O', '|   -|', '|', '|', '|_______'],
+    [' ____', '|    |', '|    O', '|   -|-', '|', '|', '|_______'],
+    [' ____', '|    |', '|    O', '|   -|-', '|    /', '|', '|_______'],
+    [' ____', '|    |', '|    O', '|   -|-', '|    /\\', '|', '|_______']]
+
+    for part in build[count]:
+        print(part)
+
+
 def hangman():
 
     print('\n')
@@ -27,28 +62,18 @@ def hangman():
     letters_guessed = []
     failed_guess_count = 0
 
-    build = [[''],
-    [' ____', '|    |', '|', '|', '|', '|', '-'],
-    [' ____', '|    |', '|    O', '|', '|', '|', '-'],
-    [' ____', '|    |', '|    O', '|    |', '|', '|', '-'],
-    [' ____', '|    |', '|    O', '|   -|', '|', '|', '-'],
-    [' ____', '|    |', '|    O', '|   -|-', '|', '|', '-'],
-    [' ____', '|    |', '|    O', '|   -|-', '|    /', '|', '-'],
-    [' ____', '|    |', '|    O', '|   -|-', '|    /\\', '|', '-']]
-
     while failed_guess_count < 7:
         
         print('\n')
-        for part in build[failed_guess_count]:
-            print(part)
+        print_build(failed_guess_count)
         print('\n')
         print(dashes)
         print('\n')
 
         if check_win(dashes, mystery_word):
-            print('=D')
-            print('Congratulations! You have completed the word puzzle. You are now free.')
+            win_message()
             break
+            
         
         print(f'You have ', 7 - failed_guess_count, ' guesses remaining')
         print('Letters guessed: ', letters_guessed)
@@ -68,7 +93,6 @@ def hangman():
                     letters[i] = mystery_word[i]
                     dashes = ''.join(letters)
 
-
         else: 
             if guess in letters_guessed:
                 print('\n')
@@ -80,10 +104,6 @@ def hangman():
                 failed_guess_count += 1
 
     if failed_guess_count == 7:
-        print('\n')
-        print('The correct word was ', mystery_word)
-        print('\n')
-        print('=O')
-        print('You have used all your guesses and have been hanged! Run again to have another chance at life.')
+        loss_message(mystery_word)
 
 hangman()
