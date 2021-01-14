@@ -1,3 +1,4 @@
+
 import random
 
 word_bank = ['apple', 'anime', 'impeachment', 'coding', 'computer', 'automation', 'library' ]
@@ -91,7 +92,7 @@ def hangman(arr):
     computer_win = 0
     word_so_far=""
     a=0 
-    while user_win != len(gameword)+a or computer_win != 4:
+    while user_win != len(gameword)+a or computer_win != 5:
          
         for i in range(len(gameword)):
             letter=input('Please Enter Your Letter: ')
@@ -107,15 +108,8 @@ def hangman(arr):
                 print(display_word)
                 if user_win == len(gameword):
                     chosen_word = random.choice(arr) 
-                    print("You win!")
-                    display_word =('_' * len(chosen_word))
-                    print(display_word)
-                    print(chosen_word)
-                    gameword = list(chosen_word)
-                    user_win = 0
-                    computer_win = 0
-                    word_so_far=""
-                    a=0 
+                    print('You Win!')
+                    hangman(arr) 
                     
             else:  
                 
@@ -126,16 +120,7 @@ def hangman(arr):
                 print(image[computer_win])
                 a=a+1
                 if computer_win==5:
-                    print("Computer won!")
-                    chosen_word = random.choice(arr)
-                    display_word =('_' * len(chosen_word))
-                    print(display_word)
-                    print(chosen_word)
-                    gameword = list(chosen_word)
-                    user_win = 0
-                    computer_win = 0
-                    word_so_far=""
-                    a=0 
+                   print('Computer Wins')
+                   hangman(arr)
 hangman(word_bank)
-            
         
