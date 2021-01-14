@@ -166,3 +166,18 @@ def continue_game():
         return
     else:
         lose()
+
+looping = True
+game_init()
+continue_game()
+
+while looping:
+    should_continue = input('Would you like to play again? Yes or no\n').lower()
+    if should_continue == 'yes' or should_continue == 'y':
+        game_init()
+        continue_game()
+    elif should_continue == 'no' or should_continue == 'n':
+        print('Thanks for playing.')
+        looping = False
+    else: 
+        print('Not sure if you meant yes or no.\n')
