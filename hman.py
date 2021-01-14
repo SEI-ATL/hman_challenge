@@ -65,19 +65,19 @@ def letter_guessed(letter):
         num_wrong_guesses = num_wrong_guesses + 1
 
         if num_wrong_guesses == 6:
-            print(' \n_________\n|         |\n|         O\n|        -|-\n|        / \ \n-')
+            print(' \n _________\n|         |\n|         O\n|        -|-\n|        / \ \n-')
         elif num_wrong_guesses == 5:
-            print(' \n_________\n|         |\n|         O\n|        -|-\n|        /\n|\n-')
+            print(' \n _________\n|         |\n|         O\n|        -|-\n|        /\n|\n-')
         elif num_wrong_guesses == 4:
-            print(' \n_________\n|         |\n|         O\n|        -|-\n|\n|\n-')
+            print(' \n _________\n|         |\n|         O\n|        -|-\n|\n|\n-')
         elif num_wrong_guesses == 3:
-            print(' \n_________\n|         |\n|         O\n|        -|\n|\n|\n-')
+            print(' \n _________\n|         |\n|         O\n|        -|\n|\n|\n-')
         elif num_wrong_guesses == 2:
-            print(' \n_________\n|         |\n|         O\n|         |\n|\n|\n-')
+            print(' \n _________\n|         |\n|         O\n|         |\n|\n|\n-')
         elif num_wrong_guesses == 1:
-            print(' \n_________\n|         |\n|         O\n|        \n|\n|\n-')
+            print(' \n _________\n|         |\n|         O\n|        \n|\n|\n-')
         elif num_wrong_guesses == 0:
-            print(' \n_________\n|         |\n|         \n|        \n|\n|\n-')
+            print(' \n _________\n|         |\n|         \n|        \n|\n|\n-')
 
         print(f'\n{hidden_word}')
         print(f'LETTERS ALREADY GUESSED:\n{already_guessed}')
@@ -98,7 +98,7 @@ def start_game():
     name = input('\n\nWhats is your name?  ')
     print(f'\nHello {name}!')
     print('----------------------------------------------------------------------------')
-    print(f'\n Welcome to HMan {name}, have stored a word for you and\n your job is to gues the word before you hang the poor\n stick person. When prompted, choose a letter that you\n think is in the hidden word. If you are right we will\n give you that letter, but if you are wrong, Hangtime 😈')
+    print(f'\n Welcome to HMan, {name}, we have stored a word for you\n and your job is to guess the word before you hang the\n poor stick person. When prompted, choose a letter that\n you think is in the hidden word. If you are right, we\n will give you that letter, but if you are wrong...\n\n Hangtime! 😈')
     print('----------------------------------------------------------------------------')
     
     
@@ -107,8 +107,8 @@ def start_game():
         if answer == "y":
             while num_wrong_guesses != 6:
                 hide_word(random_word)
-                print('----------------------------------------------------------------')
-                print(f'\nYour word has {len(hidden_word)} letters, here is your word: \n\n                         {hidden_word}')
+                print('\n\n----------------------------------------------------------------')
+                print(f'Your word has {len(hidden_word)} letters, here is your word: \n\n                         {hidden_word}')
                 print('----------------------------------------------------------------')
                 print(f'THIS SHOULD NOT PRINT: {random_word}')
                 letter = input('\n\nWhat is your letter?      ')
@@ -126,4 +126,3 @@ start_game()
 
 # * If the letter is in the word, mark it as revealed and visually display that letter in the word.
 # * If the letter is incorrect, draw another part onto the stick person.
-    
