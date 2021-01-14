@@ -1,0 +1,1 @@
+words_list = ['grab','fight','hang','out','tired','expert','novice','bubble', 'bannana','apple','fruit','peach','soup','form','stick','view','horse','mount','eagle','deer','gorilla','church','beach','house','red','color','blue','watch','market','computer','knock','tired','climb','coat']
