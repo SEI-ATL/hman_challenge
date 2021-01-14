@@ -112,7 +112,11 @@ def start_game():
                 print('\n\n----------------------------------------------------------------')
                 print(f'Your word has {len(hidden_word)} letters, here is your word: \n\n                         {hidden_word}')
                 print('----------------------------------------------------------------')
-                print(f'THIS SHOULD NOT PRINT: {random_word}')
+                
+                '''REMOVE THIS BEFORE PLAYING'''
+                # print(f'THIS SHOULD NOT PRINT: {random_word}')
+                '''REMOVE THIS BEFORE PLAYING'''
+                
                 letter = input('\n\nWhat is your letter?      ')
                 letter_guessed(letter)
                 check_status(num_wrong_guesses)
