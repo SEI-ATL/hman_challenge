@@ -35,7 +35,7 @@ class Word:
 
 class HmanGame:
     def __init__(self):
-        self.word_bank = ('orzo', 'linguine', 'penne', 'spaghetti', 'linguine', 'rotini')
+        self.word_bank = ('orzo', 'linguine', 'penne', 'spaghetti', 'linguini', 'rotini')
         self.game_over = False
     
     def verfiy_guess(self, letter):
