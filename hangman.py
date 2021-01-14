@@ -79,6 +79,7 @@ def game_init():
     secret_word = secret_words[random_index]
     letters_left = len(secret_word)
     hangman_guesses_left = 6
+    letters_guessed = []
 
     i = 0
     while i < len(secret_word):
