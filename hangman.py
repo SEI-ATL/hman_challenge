@@ -98,25 +98,29 @@ def add_to_guesses(guess):
     letters_guessed.append(guess)
 
 def success(guess):
-    global underscored_secret_word
-    global win
-    print('Correct')
-    add_to_guesses(guess)
-    index = 0
-    for letter in secret_word:
-        if letter == guess:
-            if index == 0
-            underscored_secret_word = guess + underscored_secret_word[1:]
-            elif index < (len(secret_word) - 1): 
-                underscored_secret_word = underscored_secret_word[0: (index * 2)] + guess + " " + underscored_secret_word[(index * 2 + 2)]
-            else:
-                underscored_secret_word = underscored_secret_word[:-2] + guess
-        index += 1
-        for letter in underscored_secret_word:
-            if letter == '_':
-                continue_game()
-                return
-        win()
+  global underscored_secret_word
+  global win
+  print("Correct")
+  add_to_guesses(guess)
+  index = 0
+  for letter in secret_word:
+    if letter == guess:
+      # handles the case for when the first letter in the secret word is the guess
+      if index == 0:
+        underscored_secret_word = guess + underscored_secret_word[1:] # apple -> a _ _ _ _
+      # handles the case for when the guessed letter is not the first or the last letter
+      elif index < (len(secret_word) - 1):
+        underscored_secret_word = underscored_secret_word[0:(index * 2)] + guess + " " + underscored_secret_word[(index * 2 + 2):]
+      # handles the case for when the guessed letter is the last letter in the secret word
+      else:
+        underscored_secret_word = underscored_secret_word[:-2] + guess
+    index += 1
+  # check if all letters have been guessed, and if so run win() otherwise we'll continue the game
+  for letter in underscored_secret_word:
+    if letter == "_":
+      continue_game()
+      return
+  win()
 
 def print_hangman(incorrect_guesses_left):
     print(hangman_table[incorrect_guesses_left])
