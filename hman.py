@@ -53,9 +53,20 @@ def game(word):
     else:
         print("nope loser!!! the word is" + word)
 
+def display_hangman(tries):
+    stages = []
+    return stages[tries]
 
-    
-                
+
+def main():
+    word = get_word()
+    play(word)
+    while input("Play Again? (Y/N) ").upper() == "Y":
+        word = get_word()
+        play(word)
+
+
+
 
 
 
