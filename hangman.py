@@ -1,8 +1,6 @@
 import random
 
-word_bank = ['rainbow', 'computer', 'science', 'programming',
-             'python', 'mathematics', 'player', 'condition',
-             'reverse', 'water', 'board', 'geeks']
+word_bank = ['bunny', 'hello', 'onomatopoeia', 'periodt']
 
 
 def hangman_game(attempts):
@@ -26,8 +24,6 @@ def hangman_game(attempts):
         print('👉', ''.join(correct))
         print()
 
-        print(len(word), correct_guesses)
-
         if guess in word:
             print('✔. # turns left: ', turns)
             # correct_guesses = len([[c for c in guesses if c in word]])
@@ -39,11 +35,12 @@ def hangman_game(attempts):
             # wrong_guesses = len([c for c in guesses if c not in word])
             wrong_guesses += 1
 
-        if len(word) == len([c for c in guesses if c in word]):
+        if word == ''.join(correct):
+            print('🎉🎉🎉 YAY')
+            break
 
-            print('win')
-
-    return "💀💀💀"
+        if turns == 0:
+            return "💀💀💀 TRY AGAIN"
 
 
 print('HANGMAN')
