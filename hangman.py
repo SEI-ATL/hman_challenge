@@ -19,6 +19,7 @@ def hide_word(word):
 
 def guess_letter():
     guess = input("What letter would you like to guess?")
+    guess = guess.lower()
     return guess
 
 def check_the_guess(guess, word):
@@ -44,8 +45,17 @@ def check_the_guess(guess, word):
     else:
         return False
 
-        
-        
+
+# Check every character in the word
+# if any letter is an underscore you are not finished
+# else you must have won
+def check_win(hidden_word):
+    hidden_word_string = ''.join(hidden_word)
+    if hidden_word_string == word:
+        print(f"Nice Job the word was {hidden_word_string}")
+        return True
+    else:
+        return False
 
 # def counter(counter = 5):
 #     if counter == 0:
@@ -129,6 +139,7 @@ stage7 = """
 
 while game_on == True:
     check_round = check_the_guess(guess_letter(), word)
+    check_for_win = check_win(hidden_word)
     if (check_round) == False:
         counter += 1
     if counter == 5:
@@ -147,5 +158,8 @@ while game_on == True:
         print(stage5)
     elif counter == 5:
         print(stage6)
+    if check_for_win == True:
+        print("YOU WIN!!")
+        game_on = False
         
 
