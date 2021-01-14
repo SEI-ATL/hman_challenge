@@ -14,7 +14,7 @@ words = ['audi', 'ferrari', 'bmw', 'porsche', 'toyota']
 #     user_inputs = []
 #     number_of_attempts = 0
 
-
+guesses_left = 6
 # visual variables
 hangman1 = '''
 ______
@@ -123,3 +123,62 @@ def success(guess):
                 index * 2 + 2)] + guess + " "
         else:
             underscored_secret_word = underscored_secret_word[:-2] + guess
+    index += 1
+    for letter in underscored_secret_word:
+        if letter == "_":
+            continue_game()
+            return
+    win()
+
+
+def hangman(incorrect_guesses_left):
+    print(hangman_table[incorrect_guesses_left])
+
+
+def failure(guess):
+    global guesses_left
+    add_to_guesses(guess)
+    guesses_left -= 1
+    print_hangman(guesses_left)
+    continue_game()
+
+
+def already_guessed():
+    print('You already guessed that letter')
+    continue_game()
+
+
+def continue_game():
+    global errors
+    print(f'You have {guesses_left} guesses left.')
+    print(f'You have guessed: {letters_guessed}')
+    print(f"The word you need: {underscored_secret_word}")
+    if guesses_left > 0:
+        guess = input('What letter would you like to guess? ').lower()
+        if guess == secret_word:
+            win()
+            return
+
+        for letter in secret_word:
+            if letter == guess:
+                success(guess)
+                return
+        failure()
+        return
+    else:
+        lose()
+
+
+looping = True
+game_init()
+continue_game()
+
+while looping:
+    should_continue = input(
+        "Would you like to play again? (Yes or No) ").lower()
+    if should_continue == "yes" or should_continue == "y":
+        game_init()
+        continue_game()
+    elif should_continue == "no" or "n":
+        print("Thanks for playing.")
+        looping = False
